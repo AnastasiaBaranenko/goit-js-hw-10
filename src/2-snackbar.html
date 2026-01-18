@@ -15,14 +15,16 @@
         <h1 class="main-title">Snackbar</h1>
       </div>
       <form class="form">
-        <label>
+        <div class="form-label-input">
+        <label class="label-form">
           Delay (ms)
-          <input type="number" name="delay" required />
+          <input class="input-label" type="number" name="delay" required />
         </label>
+</div>
 
         <fieldset>
           <legend>State</legend>
-          <label>
+          <label >
             <input type="radio" name="state" value="fulfilled" required />
             Fulfilled
           </label>
@@ -32,7 +34,7 @@
           </label>
         </fieldset>
 
-        <button type="submit">Create notification</button>
+        <button class="btn-create" type="submit">Create notification</button>
       </form>
     </main>
 

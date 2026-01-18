@@ -30,3 +30,183 @@ main {
 main:has(.back-link) {
   text-align: center;
 }
+
+/* TIMER */
+
+.flatpickr-input{
+border-radius: 4px;
+width: 272px;
+height: 40px;
+border: 1px solid #808080;
+margin-bottom: 32px;
+margin-top: 12px;
+padding-left: 16px;
+}
+
+.flatpickr-input:hover{
+  border: 1px solid #000;
+}
+
+.flatpickr-input:active{
+ stroke: #4e75ff;
+}
+
+.flatpickr-input:disabled{
+  background: #fafafa;
+    border: 1px solid #808080;
+}
+
+
+.btn-timer{
+  border: none;
+  border-radius: 8px;
+padding: 8px 16px;
+width: 75px;
+height: 40px;
+background: #4e75ff;
+font-weight: 500;
+font-size: 16px;
+line-height: 1.5;
+letter-spacing: 0.04em;
+color: #fff;
+margin-left: 8px;
+}
+
+.btn-timer:hover{
+  background: #6c8cff;
+}
+
+.btn-timer:disabled{
+  background: #cfcfcf;
+  color: #989898;
+}
+
+
+.field{
+  flex-wrap: wrap;
+}
+
+.timer{
+display: flex;
+flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+width: calc(100% - 24px) / 4px;
+}
+
+span{
+  display: flex;
+  flex-direction: column;
+}
+
+.flatpickr-day.selected{
+ background: #4e75ff !important;
+
+}
+
+.flatpickr-day.today{
+ border-color: #4e75ff !important;
+}
+
+.value{
+font-weight: 400;
+font-size: 40px;
+line-height: 1.2;
+letter-spacing: 0.04em;
+color: #2e2f42;
+text-transform: uppercase;
+}
+
+.label{
+  text-transform: uppercase;
+font-weight: 400;
+font-size: 16px;
+line-height: 1.5;
+color: #2e2f42;
+}
+
+.flatpickr-calendar{
+  background: #f5f5f5 !important;
+}
+
+/* SNACKBAR */
+
+.btn-create{
+  border-radius: 8px;
+padding: 8px 16px;
+width: 360px;
+height: 40px;
+background: #4e75ff;
+border: none;
+font-weight: 500;
+font-size: 16px;
+line-height: 1.5;
+letter-spacing: 0.04em;
+color: #fff;
+margin-top: 24px;
+}
+
+.btn-create:hover{
+background: #6c8cff;
+}
+
+fieldset{
+    display: flex;
+  gap: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+stroke-width: 1px;
+stroke: #808080;
+  width: 361px;
+height: 65px;
+margin-right: auto;
+margin-left: auto;
+margin-top: 30px;
+}
+
+legend{
+  margin-right: auto;
+  font-weight: 400;
+font-size: 16px;
+line-height: 1.5;
+letter-spacing: 0.04em;
+color: #2e2f42;
+}
+
+.input-label{
+  margin-top: 8px;
+  border: 1px solid #808080;
+border-radius: 4px;
+width: 360px;
+height: 40px;
+}
+
+.input-label:hover{
+border: 1px solid #000;
+}
+
+.input-label:active{
+border: 1px solid #4e75ff;
+
+}
+
+.label-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="radio"]:active{
+  accent-color:  #4e75ff;;
+}
+
+input[type="radio"]:hover{
+  accent-color: none;
+}
+
+.iziToast-close{
+  filter: brightness(0) invert(1);
+  opacity: 1 !important;
+}
