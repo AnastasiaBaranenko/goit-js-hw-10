@@ -11,7 +11,10 @@ const hoursTimer = document.querySelector('span[data-hours]');
 const minutesTimer = document.querySelector('span[data-minutes]');
 const secondsTimer = document.querySelector('span[data-seconds]');
 
+
 startBtn.disabled = true;
+
+let userSelectedDate = null;
 
 const options = {
   enableTime: true,
@@ -20,26 +23,26 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
-    if (userSelectedDate < new Date()) {
-iziToast.show({
+    if (userSelectedDate > new Date()){
+       startBtn.disabled = false;
+    } else {iziToast.show({
     message: 'Please choose a date in the future',
     backgroundColor: '#ef4040',
     messageColor: 'white',
     position: 'topRight'
-})}else{
-       timer.start();
-    startBtn.disabled = false;
-  }
+})}
   },
 };
 
 flatpickr('#datetime-picker', options);
 
-let userSelectedDate = null;
+const input = document.querySelector('#datetime-picker')
 
 startBtn.addEventListener('click', () => {
-    if(userSelectedDate){
-   startBtn.disabled = true;
+if (userSelectedDate > new Date()) {
+       timer.start();
+       startBtn.disabled = true;
+    input.disabled = true;
   }
 });
 
@@ -53,7 +56,7 @@ class Timer {
   }
 
   init() {
-    const ms = this.convertMs(0);
+    const ms = convertMs(0);
     this.onTimer(ms);
   }
 
@@ -67,7 +70,12 @@ class Timer {
       const timeNow = new Date();
       const timesTimer = startTimer - timeNow;
 
-      const time = this.convertMs(timesTimer);
+      if(timesTimer <= 0){
+        this.stop();
+        return;
+      }
+      
+      const time = convertMs(timesTimer);
 
       this.onTimer(time);
     }, 1000);
@@ -76,10 +84,18 @@ class Timer {
   stop() {
     clearInterval(this.intervalID);
     this.isActive = false;
-    value = this.convertMs(0);
+    input.disabled = false;
   }
 
-  convertMs(ms) {
+}
+
+const optionsTimer = {
+  onTimer: update,
+};
+
+const timer = new Timer(optionsTimer);
+
+  function convertMs(ms) {
     const second = 1000;
     const minute = second * 60;
     const hour = minute * 60;
@@ -93,19 +109,12 @@ class Timer {
 
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
-    return { days: String(this.pad(days)), hours:String(this.pad(hours)), minutes:String(this.pad(minutes)), seconds: String(this.pad(seconds))};
-  }
-
-  pad(valueTimer) {
-    return String(valueTimer).padStart(2, '0');
-  }
+    return {days:pad(days), hours:pad(hours), minutes:pad(minutes), seconds:pad(seconds)};
 }
 
-const optionsTimer = {
-  onTimer: update,
-};
-
-const timer = new Timer(optionsTimer);
+ function pad(valueTimer){
+    return String(valueTimer).padStart(2, '0');
+  }
 
 function update({ days, hours, minutes, seconds }) {
   daysTimer.textContent = `${days}`;
