@@ -30,7 +30,9 @@ const options = {
     backgroundColor: '#ef4040',
     messageColor: 'white',
     position: 'topRight'
-})}
+});
+  startBtn.disabled = true;
+}
   },
 };
 
@@ -72,6 +74,7 @@ class Timer {
 
       if(timesTimer <= 0){
         this.stop();
+this.onTimer(convertMs(0));
         return;
       }
       
